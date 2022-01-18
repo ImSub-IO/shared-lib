@@ -4,6 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
+	<PackageId>RabbitMqManager</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>Marco Cavallo</Authors>
+	<Company>ImSub-IO</Company>
+	<PackageDescription>This package is used to manage a RabbitMq queue</PackageDescription>
+	<RepositoryUrl>https://github.com/ImSub-IO/shared-lib</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
