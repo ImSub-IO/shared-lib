@@ -6,7 +6,7 @@ using System.Text;
 
 namespace QueueManager.QueueManagers
 {
-    public class BasicReceiverQueueManager<T> : QueueManagerBase, IBasicReceiverQueueManager<T> where T : class
+    public class BasicReceiverQueueManager<T> : QueueManagerBase where T : class
     {
         private EventingBasicConsumer _consumer;
 
