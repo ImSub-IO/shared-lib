@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace QueueManager.QueueManagers
 {
-    internal interface IBasicReceiverQueueManager<T> where T : class
+    public interface IBasicReceiverQueueManager<T> where T : class
     {
-        void Consume();
+        protected void Consume();
     }
 }

@@ -30,7 +30,7 @@ namespace QueueManager.QueueManagers
         /// <summary>
         /// Start reading messages from the queue
         /// </summary>
-        public void Consume()
+        protected virtual void Consume()
         {
             if (ConnectionExists())
             {
