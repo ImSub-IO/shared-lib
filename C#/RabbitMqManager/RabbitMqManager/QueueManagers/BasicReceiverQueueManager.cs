@@ -6,7 +6,7 @@ using System.Text;
 
 namespace QueueManager.QueueManagers
 {
-    public class BasicReceiverQueueManager<T> : QueueManagerBase where T : class
+    public class BasicReceiverQueueManager<T> : QueueManagerBase, IBasicReceiverQueueManager<T> where T : class
     {
         private EventingBasicConsumer _consumer;
 
@@ -24,13 +24,12 @@ namespace QueueManager.QueueManagers
             base.CreateChannel();
             _consumer = new EventingBasicConsumer(_channel);
             _consumer.Received += OnReceive;
-            Consume();
         }
 
         /// <summary>
         /// Start reading messages from the queue
         /// </summary>
-        protected virtual void Consume()
+        public virtual void Consume()
         {
             if (ConnectionExists())
             {
