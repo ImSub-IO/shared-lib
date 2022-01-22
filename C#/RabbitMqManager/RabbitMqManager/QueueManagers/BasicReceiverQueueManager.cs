@@ -51,7 +51,7 @@ namespace QueueManager.QueueManagers
         /// <summary>
         /// Check the queue state
         /// </summary>
-        protected void CheckState()
+        public void CheckState()
         {
             if (ConnectionExists())
             {
