@@ -8,6 +8,7 @@ namespace QueueManager.QueueManagers
 {
     public interface IBasicSenderQueueManager<T> where T : class
     {
+        void Close(bool onlyChannel);
         void Send(T elem);
     }
 }
