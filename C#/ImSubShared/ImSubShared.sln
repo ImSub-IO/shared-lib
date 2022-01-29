@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImSubShared.Logger", "ImSubShared.Logger\ImSubShared.Logger.csproj", "{E1F5B98A-00CD-4ABD-8787-C5DEB3DCBFB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImSubShared.RabbitMqManager", "ImSubShared.RabbitMqManager\ImSubShared.RabbitMqManager.csproj", "{94F04CE4-211A-4F0A-8759-43BE38B81F92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3797B3DB-B619-4C08-893F-B966C24019F6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImSubShared.RabbitMqManager.Test", "ImSubShared.RabbitMqManager.Test\ImSubShared.RabbitMqManager.Test.csproj", "{E8C13CF3-5AD8-4D95-9A05-6D13C42BE4B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImSubShared.SecurityUtils", "ImSubShared.SecurityUtils\ImSubShared.SecurityUtils.csproj", "{F55173C4-2DE8-42BD-A028-006DBC797AAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImSubShared.SecurityUtils.Test", "ImSubShared.SecurityUtils.Test\ImSubShared.SecurityUtils.Test.csproj", "{71B4F738-32BC-4F1D-B825-F865254E306C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1F5B98A-00CD-4ABD-8787-C5DEB3DCBFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F5B98A-00CD-4ABD-8787-C5DEB3DCBFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F5B98A-00CD-4ABD-8787-C5DEB3DCBFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F5B98A-00CD-4ABD-8787-C5DEB3DCBFB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F04CE4-211A-4F0A-8759-43BE38B81F92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F04CE4-211A-4F0A-8759-43BE38B81F92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F04CE4-211A-4F0A-8759-43BE38B81F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F04CE4-211A-4F0A-8759-43BE38B81F92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C13CF3-5AD8-4D95-9A05-6D13C42BE4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C13CF3-5AD8-4D95-9A05-6D13C42BE4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C13CF3-5AD8-4D95-9A05-6D13C42BE4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C13CF3-5AD8-4D95-9A05-6D13C42BE4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55173C4-2DE8-42BD-A028-006DBC797AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55173C4-2DE8-42BD-A028-006DBC797AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55173C4-2DE8-42BD-A028-006DBC797AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55173C4-2DE8-42BD-A028-006DBC797AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B4F738-32BC-4F1D-B825-F865254E306C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B4F738-32BC-4F1D-B825-F865254E306C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B4F738-32BC-4F1D-B825-F865254E306C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B4F738-32BC-4F1D-B825-F865254E306C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7F94522-BF7D-4C77-92C4-2DB7E5E1152E}
+	EndGlobalSection
+EndGlobal
