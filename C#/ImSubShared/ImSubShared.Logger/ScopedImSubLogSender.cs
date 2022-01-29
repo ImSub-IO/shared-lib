@@ -34,9 +34,9 @@ namespace ImSubShared.Logger
                 {
                     LogMessage? message = _memoryLogQueue.DequeueElement();
                     if (message != null)
-                    {
                         _basicSenderQueueManager.Send(message);
-                    }
+                    else
+                        sleepTime = 3000;
                 }
                 catch (Exception ex)
                 {
