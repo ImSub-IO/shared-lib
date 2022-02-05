@@ -13,7 +13,7 @@ namespace ImSubShared.Logger
     public class ImSubLogger : IImSubLogger
     {
         private readonly string _serviceName;
-        private readonly IMemoryLogQueue _memoryLogQueue;
+        private readonly MemoryLogQueue _memoryLogQueue;
 
         /// <summary>
         /// Create a new istance of <see cref="ImSubLogger"/>
@@ -21,19 +21,20 @@ namespace ImSubShared.Logger
         /// <param name="conf"></param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="InvalidImSubLoggerConfigurationException"></exception>
-        public ImSubLogger(IOptions<ImSubLoggerGlobalConfiguration> conf, IMemoryLogQueue memoryLogQueue)
+        public ImSubLogger(IOptions<ImSubLoggerGlobalConfiguration> conf)
         {
             if(conf == null)
                 throw new ArgumentNullException(nameof(conf));
-            if(memoryLogQueue == null)
-                throw new ArgumentNullException(nameof(memoryLogQueue));
 
             ImSubLoggerConfiguration loggerConfiguration = conf.Value.ImSubLoggerConfiguration ?? throw new ArgumentNullException(nameof(conf.Value.ImSubLoggerConfiguration));
             if (!loggerConfiguration.IsValid())
-                throw new InvalidImSubLoggerConfigurationException("Configuration is not valid");
-
+                throw new InvalidImSubLoggerConfigurationException();
             _serviceName = loggerConfiguration.ServiceName;
-            _memoryLogQueue = memoryLogQueue;
+
+            MemoryQueueConfiguration memoryQueueConfiguration = conf.Value.MemoryQueueConfiguration ?? throw new ArgumentNullException(nameof(conf.Value.MemoryQueueConfiguration));
+            if (!memoryQueueConfiguration.IsValid())
+                throw new InvalidMemoryLogQueueConfigurationException();
+            _memoryLogQueue = MemoryLogQueue.GetInstance(memoryQueueConfiguration);
 
         }
 

@@ -1,7 +1,7 @@
 ﻿
 namespace ImSubShared.Logger.Configuration
 {
-    internal class ImSubLoggerConfiguration
+    public class ImSubLoggerConfiguration
     {
         public string ServiceName { get; set; }
 

@@ -1,16 +1,17 @@
 ﻿using ImSubShared.Logger.Configuration;
 using ImSubShared.Logger.Exceptions;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 
 namespace ImSubShared.Logger
 {
     /// <summary>
-    /// Class for a concurrent <see cref="Queue{T}"/> wrapper. register it as Singleton in servies DI
+    /// Class for a concurrent <see cref="Queue{T}"/> wrapper
     /// </summary>
-    public class MemoryLogQueue : IMemoryLogQueue
+    internal class MemoryLogQueue
     {
+        private static MemoryLogQueue _instance;
+
         private readonly object _lock = new object();
         private readonly Queue<LogMessage> _queue;
         private readonly MemoryQueueConfiguration _conf;
@@ -19,17 +20,27 @@ namespace ImSubShared.Logger
         /// Creates an new instance of <see cref="MemoryLogQueue"/>
         /// </summary>
         /// <param name="conf"></param>
-        public MemoryLogQueue(IOptions<ImSubLoggerGlobalConfiguration> conf)
+        private MemoryLogQueue(MemoryQueueConfiguration conf)
         {
-            if (conf == null)
-                throw new ArgumentNullException(nameof(conf));
-            
-            _conf = conf.Value.MemoryQueueConfiguration ?? throw new ArgumentNullException(nameof(conf.Value.MemoryQueueConfiguration));
+            _conf = conf ?? throw new ArgumentNullException(nameof(conf));
             
             if (!_conf.IsValid())
                 throw new InvalidMemoryLogQueueConfigurationException();
 
             _queue = new Queue<LogMessage>();
+        }
+
+        /// <summary>
+        /// Creates a new singleton instance of <see cref="MemoryLogQueue"/>
+        /// </summary>
+        /// <param name="conf"></param>
+        /// <returns></returns>
+        public static MemoryLogQueue GetInstance(MemoryQueueConfiguration conf)
+        {
+            if (_instance != null)
+                _instance = new MemoryLogQueue(conf);
+
+            return _instance;
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿using ImSubShared.RabbitMqManager.QueueConfigurations;
+﻿using ImSubShared.Logger.Configuration;
+using ImSubShared.Logger.Exceptions;
+using ImSubShared.RabbitMqManager.QueueConfigurations;
 using ImSubShared.RabbitMqManagers.QueueManager.QueueManagers;
 using Microsoft.Extensions.Options;
 using System;
@@ -12,16 +14,25 @@ namespace ImSubShared.Logger
     /// </summary>
     public class ScopedImSubLogSender : IScopedImSubLogSender
     {
-        private readonly IMemoryLogQueue _memoryLogQueue;
+        private readonly MemoryLogQueue _memoryLogQueue;
         private readonly BasicQueueConfiguration _basicQueueConfiguration;
         private readonly IBasicSenderQueueManager<LogMessage> _basicSenderQueueManager;
 
-        public ScopedImSubLogSender(IOptions<BasicQueueConfiguration> basicQueueConfiguration, IMemoryLogQueue memoryLogQueue)
+        public ScopedImSubLogSender(IOptions<BasicQueueConfiguration> basicQueueConfiguration, 
+                                    IOptions<ImSubLoggerGlobalConfiguration> globalConf)
         {
 
             _basicQueueConfiguration = basicQueueConfiguration == null ? throw new ArgumentNullException(nameof(basicQueueConfiguration)) : basicQueueConfiguration.Value;
             _basicSenderQueueManager = new BasicSenderQueueManager<LogMessage>(_basicQueueConfiguration);
-            _memoryLogQueue = memoryLogQueue ?? throw new ArgumentNullException(nameof(memoryLogQueue));
+
+            if (globalConf == null) 
+                throw new ArgumentNullException(nameof(globalConf));
+
+            var memoryQueueConfig = globalConf.Value.MemoryQueueConfiguration ?? throw new ArgumentNullException(nameof(globalConf.Value.MemoryQueueConfiguration));
+            if (!memoryQueueConfig.IsValid())
+                throw new InvalidMemoryLogQueueConfigurationException();
+
+            _memoryLogQueue = MemoryLogQueue.GetInstance(memoryQueueConfig);
         }
 
 
