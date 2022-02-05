@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImSubShared.Logger.Configuration
 {
-    public class MemoryQueueConfiguration
+    internal class MemoryQueueConfiguration
     {
         public int QueueSizeLimit { get; set; }
 

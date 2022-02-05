@@ -19,11 +19,13 @@ namespace ImSubShared.Logger
         /// Creates an new instance of <see cref="MemoryLogQueue"/>
         /// </summary>
         /// <param name="conf"></param>
-        public MemoryLogQueue(IOptions<MemoryQueueConfiguration> conf)
+        public MemoryLogQueue(IOptions<ImSubLoggerGlobalConfiguration> conf)
         {
             if (conf == null)
                 throw new ArgumentNullException(nameof(conf));
-            _conf = conf.Value;
+            
+            _conf = conf.Value.MemoryQueueConfiguration ?? throw new ArgumentNullException(nameof(conf.Value.MemoryQueueConfiguration));
+            
             if (!_conf.IsValid())
                 throw new InvalidMemoryLogQueueConfigurationException();
 
@@ -37,13 +39,18 @@ namespace ImSubShared.Logger
         /// <exception cref="FullQueueException"></exception>
         public void EnqueueElement(LogMessage message)
         {
+            bool enqueued = false;
             lock (_lock)
             {
                 if (_queue.Count < _conf.QueueSizeLimit)
+                {
                     _queue.Enqueue(message);
-                else
-                    throw new FullQueueException();
+                    enqueued = true;
+                }   
             }
+
+            if (!enqueued)
+                throw new FullQueueException();
         }
 
         /// <summary>

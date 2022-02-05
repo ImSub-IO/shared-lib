@@ -21,14 +21,14 @@ namespace ImSubShared.Logger
         /// <param name="conf"></param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="InvalidImSubLoggerConfigurationException"></exception>
-        public ImSubLogger(IOptions<ImSubLoggerConfiguration> conf, IMemoryLogQueue memoryLogQueue)
+        public ImSubLogger(IOptions<ImSubLoggerGlobalConfiguration> conf, IMemoryLogQueue memoryLogQueue)
         {
             if(conf == null)
                 throw new ArgumentNullException(nameof(conf));
             if(memoryLogQueue == null)
                 throw new ArgumentNullException(nameof(memoryLogQueue));
 
-            ImSubLoggerConfiguration loggerConfiguration = conf.Value;
+            ImSubLoggerConfiguration loggerConfiguration = conf.Value.ImSubLoggerConfiguration ?? throw new ArgumentNullException(nameof(conf.Value.ImSubLoggerConfiguration));
             if (!loggerConfiguration.IsValid())
                 throw new InvalidImSubLoggerConfigurationException("Configuration is not valid");
 
