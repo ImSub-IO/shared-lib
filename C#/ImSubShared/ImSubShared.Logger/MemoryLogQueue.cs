@@ -37,7 +37,7 @@ namespace ImSubShared.Logger
         /// <returns></returns>
         public static MemoryLogQueue GetInstance(MemoryQueueConfiguration conf)
         {
-            if (_instance != null)
+            if (_instance == null)
                 _instance = new MemoryLogQueue(conf);
 
             return _instance;
