@@ -54,7 +54,14 @@ namespace ImSubShared.Logger
                 }
                 finally
                 {
-                    await Task.Delay(sleepTime, stoppingToken);
+                    try
+                    {
+                        await Task.Delay(sleepTime, stoppingToken);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"{DateTime.UtcNow} - ScopedImSubLogSender.DoWork - {ex}");
+                    }
                 }
             }
         }
