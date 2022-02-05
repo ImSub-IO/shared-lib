@@ -8,7 +8,7 @@ namespace ImSubShared.Logger
 {
     /// <summary>
     /// This class takes logs added to the queue and writes the in a RabbitMq. Register an istance of this class as
-    /// <see cref="BackgroundService"/> and an instance of <see cref="ScopedImSubLogSender"/> with services.AddScoped(...)
+    /// <see cref="BackgroundService"/> and an instance of <see cref="ImSubLogSenderService"/> with services.AddSingleton(...)
     /// </summary>
     public class ImSubLogSender : BackgroundService
     {
@@ -30,7 +30,7 @@ namespace ImSubShared.Logger
             {
                 var scopedProcessingService =
                     scope.ServiceProvider
-                        .GetRequiredService<IScopedImSubLogSender>();
+                        .GetRequiredService<IImSubLogSenderService>();
 
                 await scopedProcessingService.DoWork(stoppingToken);
             }

@@ -12,13 +12,13 @@ namespace ImSubShared.Logger
     /// <summary>
     /// This service take the logs from the <see cref="MemoryLogQueue"/> and writes them into a RabbitMq
     /// </summary>
-    public class ScopedImSubLogSender : IScopedImSubLogSender
+    public class ImSubLogSenderService : IImSubLogSenderService
     {
         private readonly MemoryLogQueue _memoryLogQueue;
         private readonly BasicQueueConfiguration _basicQueueConfiguration;
         private readonly IBasicSenderQueueManager<LogMessage> _basicSenderQueueManager;
 
-        public ScopedImSubLogSender(IOptions<ImSubLoggerGlobalConfiguration> globalConf)
+        public ImSubLogSenderService(IOptions<ImSubLoggerGlobalConfiguration> globalConf)
         {
             if (globalConf == null) 
                 throw new ArgumentNullException(nameof(globalConf));

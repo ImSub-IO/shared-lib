@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ImSubShared.Logger
 {
-    public interface IScopedImSubLogSender
+    public interface IImSubLogSenderService
     {
         Task DoWork(CancellationToken stoppingToken);
     }
