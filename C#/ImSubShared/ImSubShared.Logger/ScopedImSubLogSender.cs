@@ -18,15 +18,13 @@ namespace ImSubShared.Logger
         private readonly BasicQueueConfiguration _basicQueueConfiguration;
         private readonly IBasicSenderQueueManager<LogMessage> _basicSenderQueueManager;
 
-        public ScopedImSubLogSender(IOptions<BasicQueueConfiguration> basicQueueConfiguration, 
-                                    IOptions<ImSubLoggerGlobalConfiguration> globalConf)
+        public ScopedImSubLogSender(IOptions<ImSubLoggerGlobalConfiguration> globalConf)
         {
-
-            _basicQueueConfiguration = basicQueueConfiguration == null ? throw new ArgumentNullException(nameof(basicQueueConfiguration)) : basicQueueConfiguration.Value;
-            _basicSenderQueueManager = new BasicSenderQueueManager<LogMessage>(_basicQueueConfiguration);
-
             if (globalConf == null) 
                 throw new ArgumentNullException(nameof(globalConf));
+
+            _basicQueueConfiguration = globalConf.Value.LogQueueConfiguration ?? throw new ArgumentNullException(nameof(globalConf.Value.LogQueueConfiguration));
+            _basicSenderQueueManager = new BasicSenderQueueManager<LogMessage>(_basicQueueConfiguration);
 
             var memoryQueueConfig = globalConf.Value.MemoryQueueConfiguration ?? throw new ArgumentNullException(nameof(globalConf.Value.MemoryQueueConfiguration));
             if (!memoryQueueConfig.IsValid())

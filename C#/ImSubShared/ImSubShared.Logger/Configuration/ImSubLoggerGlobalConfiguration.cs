@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ImSubShared.RabbitMqManager.QueueConfigurations;
 
 namespace ImSubShared.Logger.Configuration
 {
@@ -10,5 +6,6 @@ namespace ImSubShared.Logger.Configuration
     {
         public ImSubLoggerConfiguration ImSubLoggerConfiguration { get; set; }
         public MemoryQueueConfiguration MemoryQueueConfiguration { get; set; }
+        public BasicQueueConfiguration LogQueueConfiguration { get; set; }
     }
 }
