@@ -9,7 +9,7 @@ namespace ImSubShared.Logger
     /// <summary>
     /// Class for a concurrent <see cref="Queue{T}"/> wrapper. register it as Singleton in servies DI
     /// </summary>
-    public class MemoryLogQueue
+    public class MemoryLogQueue : IMemoryLogQueue
     {
         private readonly object _lock = new object();
         private readonly Queue<LogMessage> _queue;
