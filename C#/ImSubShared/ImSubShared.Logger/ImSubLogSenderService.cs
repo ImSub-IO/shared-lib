@@ -49,7 +49,7 @@ namespace ImSubShared.Logger
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{DateTime.UtcNow} - ScopedImSubLogSender.DoWork - {ex}");
+                    Console.WriteLine($"{DateTime.UtcNow} - ImSubLogSender.DoWork - {ex}");
                     sleepTime = 3000;
                 }
                 finally
@@ -60,7 +60,7 @@ namespace ImSubShared.Logger
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"{DateTime.UtcNow} - ScopedImSubLogSender.DoWork - {ex}");
+                        Console.WriteLine($"{DateTime.UtcNow} - ImSubLogSender.DoWork - {ex}");
                     }
                 }
             }
