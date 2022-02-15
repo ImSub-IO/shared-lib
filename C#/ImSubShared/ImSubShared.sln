@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImSubShared.SecurityUtils",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImSubShared.SecurityUtils.Test", "ImSubShared.SecurityUtils.Test\ImSubShared.SecurityUtils.Test.csproj", "{71B4F738-32BC-4F1D-B825-F865254E306C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImSubShared.RepositoryShared", "ImSubShared.RepositoryShared\ImSubShared.RepositoryShared.csproj", "{D03BB4AC-25AC-40CA-808A-B1AFE9E664B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImSubShared.RepositoryShared", "ImSubShared.RepositoryShared\ImSubShared.RepositoryShared.csproj", "{D03BB4AC-25AC-40CA-808A-B1AFE9E664B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImSubShared.APIErrorResponses", "ImSubShared.APIErrorResponses\ImSubShared.APIErrorResponses.csproj", "{310C7942-02CF-424B-86E2-642D42A77404}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{D03BB4AC-25AC-40CA-808A-B1AFE9E664B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D03BB4AC-25AC-40CA-808A-B1AFE9E664B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D03BB4AC-25AC-40CA-808A-B1AFE9E664B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310C7942-02CF-424B-86E2-642D42A77404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310C7942-02CF-424B-86E2-642D42A77404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310C7942-02CF-424B-86E2-642D42A77404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310C7942-02CF-424B-86E2-642D42A77404}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
