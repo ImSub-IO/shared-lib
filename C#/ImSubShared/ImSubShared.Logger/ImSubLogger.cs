@@ -14,6 +14,7 @@ namespace ImSubShared.Logger
     {
         private readonly string _serviceName;
         private readonly MemoryLogQueue _memoryLogQueue;
+        private readonly LogQueueRabbitMqSingleton _rabbitMqLogQueue;
 
         /// <summary>
         /// Create a new istance of <see cref="ImSubLogger"/>
@@ -35,6 +36,9 @@ namespace ImSubShared.Logger
             if (!memoryQueueConfiguration.IsValid())
                 throw new InvalidMemoryLogQueueConfigurationException();
             _memoryLogQueue = MemoryLogQueue.GetInstance(memoryQueueConfiguration);
+
+            var basicQueueConfiguration = conf.Value.LogQueueConfiguration ?? throw new ArgumentNullException(nameof(conf.Value.LogQueueConfiguration));
+            _rabbitMqLogQueue = LogQueueRabbitMqSingleton.GetInstance(basicQueueConfiguration);
 
         }
 
@@ -117,10 +121,12 @@ namespace ImSubShared.Logger
             catch (FullQueueException)
             {
                 Console.WriteLine($"{DateTime.UtcNow} - ImSubLogger.WriteLog - Can't enqueue the message: queue is full");
+                _rabbitMqLogQueue.EmergencyWriteLogInRabbitMq("Queue is full", _serviceName);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"{DateTime.UtcNow} - ImSubLogger.WriteLog - {ex}");
+                _rabbitMqLogQueue.EmergencyWriteLogInRabbitMq(ex.Message, _serviceName, ex.ToString());
             }
         }
     }

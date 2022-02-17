@@ -1,7 +1,6 @@
 ﻿using ImSubShared.Logger.Configuration;
 using ImSubShared.Logger.Exceptions;
 using ImSubShared.RabbitMqManager.QueueConfigurations;
-using ImSubShared.RabbitMqManagers.QueueManager.QueueManagers;
 using Microsoft.Extensions.Options;
 using System;
 using System.Threading;
@@ -16,7 +15,7 @@ namespace ImSubShared.Logger
     {
         private readonly MemoryLogQueue _memoryLogQueue;
         private readonly BasicQueueConfiguration _basicQueueConfiguration;
-        private readonly IBasicSenderQueueManager<LogMessage> _basicSenderQueueManager;
+        private readonly LogQueueRabbitMqSingleton _rabbitMqLogQueue;
 
         public ImSubLogSenderService(IOptions<ImSubLoggerGlobalConfiguration> globalConf)
         {
@@ -24,7 +23,7 @@ namespace ImSubShared.Logger
                 throw new ArgumentNullException(nameof(globalConf));
 
             _basicQueueConfiguration = globalConf.Value.LogQueueConfiguration ?? throw new ArgumentNullException(nameof(globalConf.Value.LogQueueConfiguration));
-            _basicSenderQueueManager = new BasicSenderQueueManager<LogMessage>(_basicQueueConfiguration);
+            _rabbitMqLogQueue = LogQueueRabbitMqSingleton.GetInstance(_basicQueueConfiguration);
 
             var memoryQueueConfig = globalConf.Value.MemoryQueueConfiguration ?? throw new ArgumentNullException(nameof(globalConf.Value.MemoryQueueConfiguration));
             if (!memoryQueueConfig.IsValid())
@@ -39,11 +38,12 @@ namespace ImSubShared.Logger
             while (!stoppingToken.IsCancellationRequested)
             {
                 int sleepTime = 500;
+
                 try
                 {
                     LogMessage? message = _memoryLogQueue.DequeueElement();
                     if (message != null)
-                        _basicSenderQueueManager.Send(message);
+                        _rabbitMqLogQueue.LogQueue.Send(message);
                     else
                         sleepTime = 3000;
                 }
@@ -61,6 +61,7 @@ namespace ImSubShared.Logger
                     catch (Exception ex)
                     {
                         Console.WriteLine($"{DateTime.UtcNow} - ImSubLogSender.DoWork - {ex}");
+                        _rabbitMqLogQueue.EmergencyWriteLogInRabbitMq(ex.Message, string.Empty, ex.ToString());
                     }
                 }
             }
