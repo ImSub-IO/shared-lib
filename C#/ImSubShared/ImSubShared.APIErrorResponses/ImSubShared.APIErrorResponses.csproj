@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PackageId>APIErrorResponses</PackageId>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<Authors>Marco Cavallo</Authors>
 		<Company>ImSub-IO</Company>
 		<PackageDescription>This package provides a common error response interface for c# APIs</PackageDescription>
@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
 </Project>

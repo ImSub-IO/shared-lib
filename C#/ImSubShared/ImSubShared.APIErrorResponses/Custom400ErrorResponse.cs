@@ -15,7 +15,7 @@ namespace ImSubShared.APIErrorResponses
         public List<ValidationModelError> Errors { get; set; }
         public Custom400ErrorResponse(ActionContext context)
         {
-            Errors = context.ModelState.Select(x => new ValidationModelError
+            Errors = context.ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new ValidationModelError
             {
                 Key = x.Key,
                 Value = x.Value.Errors.Select(x => x.ErrorMessage).ToList()
