@@ -11,6 +11,11 @@ namespace ImSubShared.RepositoryShared
         protected readonly IMapper _mapper;
         protected readonly DbContext _dbContext;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="EFRepositoryBaseDTO{TEntity, TDto}"/>
+        /// </summary>
+        /// <param name="dbContext"></param>
+        /// <param name="mapper"></param>
         public EFRepositoryBaseDTO(DbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
@@ -22,7 +27,7 @@ namespace ImSubShared.RepositoryShared
         /// </summary>
         /// <param name="elem"></param>
         /// <returns>The new added entity</returns>
-        public void Add(TDto elem)
+        public virtual void Add(TDto elem)
         {
             _dbContext.Set<TEntity>().Add(_mapper.Map<TEntity>(elem));
         }
@@ -31,7 +36,7 @@ namespace ImSubShared.RepositoryShared
         /// Delete the given element
         /// </summary>
         /// <param name="elem"></param>
-        public void Delete(TDto elem)
+        public virtual void Delete(TDto elem)
         {
             _dbContext.Set<TEntity>().Remove(_mapper.Map<TEntity>(elem));
         }
@@ -40,7 +45,7 @@ namespace ImSubShared.RepositoryShared
         /// Update the given element
         /// </summary>
         /// <param name="elem"></param>
-        public void Update(TDto elem)
+        public virtual void Update(TDto elem)
         {
             _dbContext.Set<TEntity>().Update(_mapper.Map<TEntity>(elem));
         }
@@ -50,7 +55,7 @@ namespace ImSubShared.RepositoryShared
         /// </summary>
         /// <param name="id"></param>
         /// <returns>The elem with the specified id if exists, null otherwise</returns>
-        public async Task<TDto?> Get(long id)
+        public virtual async Task<TDto?> Get(long id)
         {
             var entity = await _dbContext.Set<TEntity>().FindAsync(id);
             if (entity != null)
