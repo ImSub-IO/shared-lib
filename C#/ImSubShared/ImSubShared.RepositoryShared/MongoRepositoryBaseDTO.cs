@@ -9,7 +9,7 @@ namespace ImSubShared.RepositoryShared
         where TDto : class
     {
         protected readonly IMapper _mapper;
-        private readonly IMongoCollection<TEntity> _mongoCollection;
+        protected readonly IMongoCollection<TEntity> _mongoCollection;
 
         /// <summary>
         /// Creates a new instance of <see cref="MongoRepositoryBaseDTO{TEntity, TDto}"/>
@@ -37,7 +37,7 @@ namespace ImSubShared.RepositoryShared
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual async Task<TDto> GetAsync(string id)
+        public virtual async Task<TDto?> GetAsync(string id)
         {
             return _mapper.Map<TDto>(await _mongoCollection.Find(Builders<TEntity>.Filter.Eq("_id", id)).FirstOrDefaultAsync());
         }
