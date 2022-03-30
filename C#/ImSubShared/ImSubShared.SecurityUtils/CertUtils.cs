@@ -67,6 +67,7 @@ namespace ImSubShared.SecurityUtils
                                                  clientCertThumbprintMatch, intermediateCertThumbprintMatch, rootCertThumbprintMatch);
                 loggerFunction(message, details);
                 context.Fail(message);
+                return Task.CompletedTask;
             }
 
             context.Success();
