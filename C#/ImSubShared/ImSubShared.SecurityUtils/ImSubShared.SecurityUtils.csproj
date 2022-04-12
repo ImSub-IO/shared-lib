@@ -5,7 +5,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<PackageId>SecurityUtils</PackageId>
-		<Version>1.0.4</Version>
+		<Version>1.0.5</Version>
 		<Authors>Marco Cavallo</Authors>
 		<Company>ImSub-IO</Company>
 		<PackageDescription>This package is used for security purpuses</PackageDescription>

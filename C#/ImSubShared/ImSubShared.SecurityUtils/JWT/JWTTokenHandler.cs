@@ -49,5 +49,34 @@ namespace ImSubShared.SecurityUtils.JWT
 
             return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
         }
+
+        /// <summary>
+        /// Used to partially validate a JWT token. It doesn't validate the expiration
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="tokenInfo"></param>
+        /// <returns>(true, null) if valid, (false, <see cref="Exception"/>) otherwise</returns>
+        public (bool valid, Exception exception)  ValidateJWTNoExp(string token, JWTTokenInfo tokenInfo)
+        {
+            try
+            {
+                new JwtSecurityTokenHandler().ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidAudience = tokenInfo.Audience,
+                    ValidIssuer = tokenInfo.Issuer,
+                    ValidateLifetime = false,
+                    ValidAlgorithms = new[] { SecurityAlgorithms.HmacSha256 },
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenInfo.Key))
+                }, out SecurityToken securityToken);
+
+                return (true, null);
+            }
+            catch (Exception ex)
+            {
+                return (false, ex);
+            }
+        }
     }
 }
