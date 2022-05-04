@@ -17,7 +17,9 @@
         INVALID_REFRESH_TOKEN = 201,
         MAIL_ALREADY_PRESENT = 202,
         MAIL_ALREADY_VERIFIED = 203,
-        INVALID_JWT_TOKEN = 204,
+        MAIL_NOT_VERIFIED = 204,
+        INVALID_JWT_TOKEN = 205,
+        INVALID_PAYMENT = 206,
 
         // User codes (from 300 to 399)
         USER_ALREADY_REGISTERED = 300

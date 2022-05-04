@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PackageId>APIErrorResponses</PackageId>
-		<Version>1.0.4</Version>
+		<Version>1.0.5</Version>
 		<Authors>Marco Cavallo</Authors>
 		<Company>ImSub-IO</Company>
 		<PackageDescription>This package provides a common error response interface for c# APIs</PackageDescription>
