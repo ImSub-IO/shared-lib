@@ -4,6 +4,6 @@ namespace ImSubShared.RepositoryShared
 {
     public interface IEFUnitOfWorkBase
     {
-       Task CommitAsync();
+        Task CommitAsync();
     }
 }

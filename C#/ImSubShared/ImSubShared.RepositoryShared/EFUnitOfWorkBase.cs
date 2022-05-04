@@ -12,6 +12,7 @@ namespace ImSubShared.RepositoryShared
     {
         protected readonly DbContext _dbContext;
 
+
         public EFUnitOfWorkBase(DbContext dbContext)
         {
             _dbContext = dbContext;
