@@ -14,46 +14,10 @@ namespace ImSubShared.Logger
         /// </summary>
         /// <param name="telegramId"></param>
         /// <param name="message"></param>
-        /// <param name="methodName"></param>
-        void Debug(string telegramId, string message, [CallerMemberName] string methodName = "");
-        /// <summary>
-        /// Creates a new log entry with severity "Debug"
-        /// </summary>
-        /// <param name="telegramId"></param>
-        /// <param name="message"></param>
         /// <param name="details"></param>
         /// <param name="methodName"></param>
-        void Debug(string telegramId, string message, string details, [CallerMemberName] string methodName = "");
-        /// <summary>
-        /// Creates a new log entry with severity "Fatal"
-        /// </summary>
-        /// <param name="telegramId"></param>
-        /// <param name="message"></param>
-        /// <param name="methodName"></param>
-        void Fatal(string telegramId, string message, [CallerMemberName] string methodName = "");
-        /// <summary>
-        /// Creates a new log entry with severity "Fatal"
-        /// </summary>
-        /// <param name="telegramId"></param>
-        /// <param name="message"></param>
-        /// <param name="details"></param>
-        /// <param name="methodName"></param>
-        void Fatal(string telegramId, string message, string details, [CallerMemberName] string methodName = "");
-        /// <summary>
-        /// Creates a new log entry with severity "Fatal"
-        /// </summary>
-        /// <param name="telegramId"></param>
-        /// <param name="message"></param>
-        /// <param name="ex"></param>
-        /// <param name="methodName"></param>
-        void Fatal(string telegramId, string message, Exception ex, [CallerMemberName] string methodName = "");
-        /// <summary>
-        /// Creates a new log entry with severity "Info"
-        /// </summary>
-        /// <param name="telegramId"></param>
-        /// <param name="message"></param>
-        /// <param name="methodName"></param>
-        void Info(string telegramId, string message, [CallerMemberName] string methodName = "");
+        void Debug(string telegramId, string message, string details = null, [CallerMemberName] string methodName = null);
+
         /// <summary>
         /// Creates a new log entry with severity "Info"
         /// </summary>
@@ -61,22 +25,17 @@ namespace ImSubShared.Logger
         /// <param name="message"></param>
         /// <param name="details"></param>
         /// <param name="methodName"></param>
-        void Info(string telegramId, string message, string details, [CallerMemberName] string methodName = "");
+        void Info(string telegramId, string message, string details = null, [CallerMemberName] string methodName = null);
+
         /// <summary>
-        /// Creates a new log entry with severity "Error"
-        /// </summary>
-        /// <param name="telegramId"></param>
-        /// <param name="message"></param>
-        /// <param name="methodName"></param>
-        void Error(string telegramId, string message, [CallerMemberName] string methodName = "");
-        /// <summary>
-        /// Creates a new log entry with severity "Error"
+        /// Creates a new log entry with severity "Warn"
         /// </summary>
         /// <param name="telegramId"></param>
         /// <param name="message"></param>
         /// <param name="details"></param>
         /// <param name="methodName"></param>
-        void Error(string telegramId, string message, string details, [CallerMemberName] string methodName = "");
+        void Warn(string telegramId, string message, string details = null, [CallerMemberName] string methodName = null);
+
         /// <summary>
         /// Creates a new log entry with severity "Error"
         /// </summary>
@@ -84,21 +43,16 @@ namespace ImSubShared.Logger
         /// <param name="message"></param>
         /// <param name="ex"></param>
         /// <param name="methodName"></param>
-        void Error(string telegramId, string message, Exception ex, [CallerMemberName] string methodName = "");
+        void Error(string telegramId, string message, Exception ex = null, string details = null, [CallerMemberName] string methodName = null);
+
         /// <summary>
-        /// Creates a new log entry with severity "Warn"
+        /// Creates a new log entry with severity "Fatal"
         /// </summary>
         /// <param name="telegramId"></param>
         /// <param name="message"></param>
+        /// <param name="ex"></param>
         /// <param name="methodName"></param>
-        void Warn(string telegramId, string message, [CallerMemberName] string methodName = "");
-        /// <summary>
-        /// Creates a new log entry with severity "Warn"
-        /// </summary>
-        /// <param name="telegramId"></param>
-        /// <param name="message"></param>
-        /// <param name="details"></param>
-        /// <param name="methodName"></param>
-        void Warn(string telegramId, string message, string details, [CallerMemberName] string methodName = "");
+        void Fatal(string telegramId, string message, Exception ex = null, string deatils = null, [CallerMemberName] string methodName = null);
+        
     }
 }
