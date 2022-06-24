@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PackageId>ImSubLogger</PackageId>
-		<Version>2.0.1</Version>
+		<Version>2.0.2</Version>
 		<Authors>Marco Cavallo</Authors>
 		<Company>ImSubLogger</Company>
 		<PackageDescription>This package is used for creating a logger for ImSub</PackageDescription>

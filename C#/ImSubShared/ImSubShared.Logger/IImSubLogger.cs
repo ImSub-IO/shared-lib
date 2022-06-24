@@ -16,7 +16,7 @@ namespace ImSubShared.Logger
         /// <param name="message"></param>
         /// <param name="details"></param>
         /// <param name="methodName"></param>
-        void Debug(string telegramId, string message, string details = null, [CallerMemberName] string methodName = null);
+        void Debug(string telegramId, string message, string details = "", [CallerMemberName] string methodName = null);
 
         /// <summary>
         /// Creates a new log entry with severity "Info"
@@ -25,7 +25,7 @@ namespace ImSubShared.Logger
         /// <param name="message"></param>
         /// <param name="details"></param>
         /// <param name="methodName"></param>
-        void Info(string telegramId, string message, string details = null, [CallerMemberName] string methodName = null);
+        void Info(string telegramId, string message, string details = "", [CallerMemberName] string methodName = null);
 
         /// <summary>
         /// Creates a new log entry with severity "Warn"
@@ -34,7 +34,7 @@ namespace ImSubShared.Logger
         /// <param name="message"></param>
         /// <param name="details"></param>
         /// <param name="methodName"></param>
-        void Warn(string telegramId, string message, string details = null, [CallerMemberName] string methodName = null);
+        void Warn(string telegramId, string message, string details = "", [CallerMemberName] string methodName = null);
 
         /// <summary>
         /// Creates a new log entry with severity "Error"
@@ -43,7 +43,7 @@ namespace ImSubShared.Logger
         /// <param name="message"></param>
         /// <param name="ex"></param>
         /// <param name="methodName"></param>
-        void Error(string telegramId, string message, Exception ex = null, string details = null, [CallerMemberName] string methodName = null);
+        void Error(string telegramId, string message, Exception ex = null, string details = "", [CallerMemberName] string methodName = null);
 
         /// <summary>
         /// Creates a new log entry with severity "Fatal"
@@ -52,7 +52,7 @@ namespace ImSubShared.Logger
         /// <param name="message"></param>
         /// <param name="ex"></param>
         /// <param name="methodName"></param>
-        void Fatal(string telegramId, string message, Exception ex = null, string deatils = null, [CallerMemberName] string methodName = null);
+        void Fatal(string telegramId, string message, Exception ex = null, string deatils = "", [CallerMemberName] string methodName = null);
         
     }
 }
