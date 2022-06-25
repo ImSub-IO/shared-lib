@@ -59,12 +59,12 @@ namespace ImSubShared.Logger
 
         public void Error(string telegramId, string message, Exception ex = null, string details = "", [CallerMemberName] string methodName = null)
         {
-            WriteLog(telegramId, methodName, message, details ?? (ex == null ? "" : ex.ToString()), LogMessage.Types.Severity.Error);
+            WriteLog(telegramId, methodName, message, string.IsNullOrEmpty(details) ? (ex == null ? "" : ex.ToString()) : details, LogMessage.Types.Severity.Error);
         }
 
         public void Fatal(string telegramId, string message, Exception ex = null, string details = "", [CallerMemberName] string methodName = null)
         {
-            WriteLog(telegramId, methodName, message, details ?? (ex == null ? "" : ex.ToString()), LogMessage.Types.Severity.Fatal);
+            WriteLog(telegramId, methodName, message, string.IsNullOrEmpty(details) ? (ex == null ? "" : ex.ToString()) : details, LogMessage.Types.Severity.Fatal);
         }
 
         private void WriteLog(string telegramId, string methodName, string message, string details, LogMessage.Types.Severity severity)
