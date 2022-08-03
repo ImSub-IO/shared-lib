@@ -10,7 +10,6 @@ namespace ImSubShared.RabbitMqManagers.QueueManager.QueueManagers
     public interface IBasicReceiverQueueManager<T> where T : class
     {
         void CheckState();
-        void Consume();
         void Close(bool onlyChannel);
     }
 }

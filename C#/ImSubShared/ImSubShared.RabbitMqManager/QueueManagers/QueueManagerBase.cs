@@ -29,6 +29,10 @@ namespace ImSubShared.RabbitMqManagers.QueueManager.QueueManagers
                     Password = _queueConfiguration.Password,
                     RequestedHeartbeat = new TimeSpan(0, 0, 15)
                 };
+
+                factory.AutomaticRecoveryEnabled = false;
+                factory.TopologyRecoveryEnabled = false;
+
                 _connection = factory.CreateConnection();
                 _connection.ConnectionShutdown += (object sender, ShutdownEventArgs e) =>
                 {

@@ -24,21 +24,11 @@ namespace ImSubShared.RabbitMqManagers.QueueManager.QueueManagers
             base.CreateChannel();
             _consumer = new EventingBasicConsumer(_channel);
             _consumer.Received += OnReceive;
-        }
-
-        /// <summary>
-        /// Start reading messages from the queue
-        /// </summary>
-        public virtual void Consume()
-        {
-            if (ConnectionExists())
-            {
-                _channel.BasicConsume(
-                    queue: _queueConfiguration.QueueName,
-                    autoAck: true,
-                    consumer: _consumer
-                );
-            }
+            _channel.BasicConsume(
+                        queue: _queueConfiguration.QueueName,
+                        autoAck: true,
+                        consumer: _consumer
+                    );
         }
 
         protected virtual void OnReceive(object obj, BasicDeliverEventArgs args)
